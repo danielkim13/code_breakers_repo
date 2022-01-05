@@ -11,11 +11,11 @@
 
 <h2 align="center"><b>ABOUT THE TEAM</b></h4>
 
-| Name           | Roles and Duties                                              |
-| -------------- | ------------------------------------------------------------- |
-| Daniel Kim     | GitHub/Project Master; additional roles will be assigned soon |
-| Tamara Wilhite | Meetings Managers; additional roles will be assigned soon     |
-| Brahm Gicheru  | additional roles will be assigned soon                        |
+| Name           | Roles and Duties             |
+| -------------- | ---------------------------- |
+| Daniel Kim     | Server-side API code breaker |
+| Tamara Wilhite | Front-end code breaker       |
+| Brahm Gicheru  | Server-side API code breaker |
 
 <hr />
 
@@ -49,4 +49,4 @@ Historic records of our meetings and highlights for
 | DTG        | Type                     | Highlights                                                                                                                                        |
 | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 01/03/2022 | Initial mtg (class time) | Initial conversation on the project, worked on the group agreement document, GitHub: repo/project created, and discussed agenda for the next mtg. |
-| 01/04/2022 | 1st team mtg             | TBD                                                                                                                                               |
+| 01/04/2022 | 1st team mtg             | Group agreement doc finished and uploaded to github; application wireframe; user story                                                            |
