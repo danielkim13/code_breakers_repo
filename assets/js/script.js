@@ -94,7 +94,9 @@ $(document).ready(function () {
       }
     }
     callParkingApi(latitude, longitude);
+    callYelpApi(latitude, longitude);
     //?if this is the method we want it. Brahm's function to call yelp API can go here.
+    
   });
 });
 
@@ -120,4 +122,15 @@ function parkingDisplay(parking) {
     $("#parking-" + (i + 1)).append("<p>Business Name: " + placeName);
     $("#parking-" + (i + 1)).append("<p>Address: " + placeAddress);
   }
+}
+
+// function to call the yelp API.
+function callYelpApi(lat, lng) {
+    const yelpApiKey = "bepTIbMPgvezqDDVQ-atLhx8vW7kvz9U76fdRWDp6Tx5Z7MGniXbWPAM9haFv90GipkAs1EIR165kV2ribByt5eAo5X7qUQU3Hywe2QDi9JbamjOIXtMMyHX7UjWYXYx";
+    const yelpApiUrl = "https://api.yelp.com/v3/businesses/search?location=" + lat + "," + lng + yelpApiKey;
+    console.log(yelpApiUrl);
+    fetch(yelpApiUrl)
+    .then((response) => response.json())
+    .then((data) => restaurantDisplay(data))
+    .catch((error) => console.log(error))
 }
