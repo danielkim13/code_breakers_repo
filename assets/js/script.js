@@ -78,9 +78,10 @@ const majorCityArray = [
     lng: -77.019347,
   },
 ];
-// clicking the dropdown menu will compare the value in the array then push the lat & lng to parking fetch function.
+
 $(document).ready(function () {
-  $(".dropdown-content").click(function (event) {
+
+  function searchMajorCity (event) {
     const cityName = event.target.textContent;
     let latitude;
     let longitude;
@@ -92,32 +93,76 @@ $(document).ready(function () {
         break;
       }
     }
+
     callParkingApi(latitude, longitude);
-    //?if this is the method we want it. Brahm's function to call yelp API can go here.
-  });
-});
+    saveSearchedCity(cityName);
+    //?if this is the method we want it. Brahm's function to call yelp API can go here.  
+  };
 
-// function to call the google places API.
-function callParkingApi(lat, lng) {
-  // had to download the chrome extension of CORS.
-  const apiKey = "AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM";
-  const apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&types=parking&rankby=distance&key=" + apiKey;
-  console.log(apiUrl);
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => parkingDisplay(data))
-    .catch((error) => console.log(error + ":oh snap!")); //fix this later.
-}
+  // clicking the dropdown menu will call the searchMajorCity function tocompare the value in the array then push the lat & lng to parking fetch function.
+  $(".dropdown-content").click(searchMajorCity);
 
-// function to display 5 nearby parking based on the city search.
-function parkingDisplay(parking) {
-  // displaying first five parking place info on the page.
-  for (let i = 1; i <= 5; i++) {
-    const placeName = parking.results[i].name;
-    const placeAddress = parking.results[i].vicinity;
-    $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
-    $("#parking-" + i).append("<p>" + placeName);
-    $("#parking-" + i).append("<p>" + placeAddress);
-    $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light")
+  // function to call the google places API.
+  function callParkingApi(lat, lng) {
+    // had to download the chrome extension of CORS.
+    const apiKey = "AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM";
+    const apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&types=parking&rankby=distance&key=" + apiKey;
+    console.log(apiUrl);
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => parkingDisplay(data))
+      .catch((error) => console.log(error + ":oh snap!")); //fix this later.
+
   }
-}
+
+  // function to display 5 nearby parking based on the city search.
+  function parkingDisplay(parking) {
+    // displaying first five parking place info on the page.
+    for (let i = 1; i <= 5; i++) {
+      const placeName = parking.results[i].name;
+      const placeAddress = parking.results[i].vicinity;
+      $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
+      $("#parking-" + i).append("<p>" + placeName);
+      $("#parking-" + i).append("<p>" + placeAddress);
+      $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light")
+    }
+  }
+
+  function saveSearchedCity(cityName) {
+    var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
+
+    if(recentlyViewedCity == null) {
+      recentlyViewedCity = [];
+      recentlyViewedCity.unshift(cityName);
+      localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
+    }
+
+    if(recentlyViewedCity.length > 4) {
+      recentlyViewedCity.pop();
+    }
+
+    if(!recentlyViewedCity.includes(cityName)) {
+      recentlyViewedCity.unshift(cityName);
+      localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
+    }
+  };
+
+
+  function displayRecents() {
+    var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
+
+    if(recentlyViewedCity) {
+      for (let i = 0; i < recentlyViewedCity.length; i++) {
+        var recentBtn = $("<button>");
+        recentBtn.attr("class", "button recent-btn columns m-2 has-background-info-light");
+        recentBtn.attr("type", "button");
+        recentBtn.attr("value", recentlyViewedCity[i]);
+        recentBtn.text(recentlyViewedCity[i]);
+        $("#recentBtn").append(recentBtn);
+      }
+    }
+  };
+
+  displayRecents();
+
+});
