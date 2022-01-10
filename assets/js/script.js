@@ -1,8 +1,6 @@
 // added by TW to add functionality to the dropdown menu
 $(".dropdown-trigger").dropdown();
 
-
-
 // city array with lat and lng.
 const majorCityArray = [
   {
@@ -105,12 +103,21 @@ function callParkingApi(lat, lng) {
   // had to download the chrome extension of CORS.
   const apiKey = "AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM";
   const apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&types=parking&rankby=distance&key=" + apiKey;
-
+  console.log(apiUrl);
   fetch(apiUrl)
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => parkingDisplay(data))
     .catch((error) => console.log(error + ":oh snap!")); //fix this later.
 }
 
 // function to display 5 nearby parking based on the city search.
-function parkingDisplay(parking) {}
+function parkingDisplay(parking) {
+  // displaying first five parking place info on the page.
+  for (let i = 0; i < 5; i++) {
+    const placeName = parking.results[i].name;
+    const placeAddress = parking.results[i].vicinity;
+    $("#parking-" + (i + 1)).append("<p><i class='fa-light fa-square-parking'>");
+    $("#parking-" + (i + 1)).append("<p>Business Name: " + placeName);
+    $("#parking-" + (i + 1)).append("<p>Address: " + placeAddress);
+  }
+}
