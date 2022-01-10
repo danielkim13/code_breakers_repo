@@ -96,6 +96,8 @@ $(document).ready(function () {
 
     callParkingApi(latitude, longitude);
     saveSearchedCity(cityName);
+    $(".recent-btn").remove();
+    displayRecents();
     //?if this is the method we want it. Brahm's function to call yelp API can go here.  
   };
 
@@ -122,9 +124,9 @@ $(document).ready(function () {
       const placeName = parking.results[i].name;
       const placeAddress = parking.results[i].vicinity;
       $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
-      $("#parking-" + i).append("<p>" + placeName);
-      $("#parking-" + i).append("<p>" + placeAddress);
-      $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light")
+      $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info")
+      $("#business-" + i).text(placeName);
+      $("#address-" + i).text(placeAddress);
     }
   }
 
