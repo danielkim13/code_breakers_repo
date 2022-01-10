@@ -1,6 +1,3 @@
-// added by TW to add functionality to the dropdown menu
-$(".dropdown-trigger").dropdown();
-
 //* DK portion. Parking API. using Google Places API
 //! team needs to decide how we are going to pass the city parameter. Google Places API location can only be searched by geometry (lat/lon). If city param is going in then I need to fetch twice or perhaps three times to get the solution.
 // for now I will just make an array of objects of cities
