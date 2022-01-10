@@ -95,17 +95,21 @@ $(document).ready(function () {
       }
     }
     callParkingApi(latitude, longitude);
+    //?if this is the method we want it. Brahm's function to call yelp API can go here.
   });
 });
 
+// function to call the google places API.
 function callParkingApi(lat, lng) {
-  // due to cross origin resource sharing(CORS) error.. using proxyUrl
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  // had to download the chrome extension of CORS.
   const apiKey = "AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM";
   const apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&types=parking&rankby=distance&key=" + apiKey;
 
-  fetch(proxyUrl + apiUrl)
+  fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => console.log(data))
-    .catch((error) => console.log(error + ":oh snap!"));
+    .catch((error) => console.log(error + ":oh snap!")); //fix this later.
 }
+
+// function to display 5 nearby parking based on the city search.
+// function parkingDisplay(parking) {}
