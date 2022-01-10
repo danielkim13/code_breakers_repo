@@ -1,3 +1,4 @@
+// added by TW to add functionality to the dropdown menu
 $(".dropdown-trigger").dropdown();
 
 //* DK portion. Parking API. using Google Places API
