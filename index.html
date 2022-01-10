@@ -9,74 +9,89 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header>
+    <header class="teal lighten-2 center-align">
       <h1>CityGirl</h1>
       <p>A short yet catchy subtitle describing point of the webpage.</p>
     </header>
 
-    <div class="row">
-      <div class="col s2">
-        <h2>Where do you want to eat?</h2>
+    <main>
+      <div class="row">
+        <div class="col s12 m4 card center-align">
+          <div class="card-title">
+            <h2>Where do you want to eat?</h2>
+          </div>
 
-        <!-- Dropdown Trigger -->
-        <a class="dropdown-trigger btn" href="#" data-target="dropdown1">Select a City!</a>
+          <div class="card-content">
+            <!-- Dropdown Trigger -->
+            <a class="dropdown-trigger btn" href="#" data-target="dropdown1">Select a City!</a>
 
-        <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">Atlanta</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Baltimore</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Boston</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Chicago</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Dallas</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Los Angeles</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Miami</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Nashville</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">New York City</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Philadelphia</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Phoenix</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Portland</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Seattle</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">St. Louis</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Washington D.C.</a></li>
-        </ul>
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="#!">Atlanta</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Baltimore</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Boston</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Chicago</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Dallas</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Los Angeles</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Miami</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Nashville</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">New York City</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Philadelphia</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Phoenix</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Portland</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Seattle</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">St. Louis</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">Washington D.C.</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col s12 m4 card center-align">
+
+          <div class="card-title">
+            <h2>Yelp Recommendations in Your Area</h2>
+          </div>
+
+          <!-- placeholder divs to dynamically add the restaurant recs (BG)-->
+          <div class="card-content">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="col s12 m4 card center-align">
+          <div class="card-title">
+            <h2>Where To Park</h2>
+          </div>
+
+          <!-- placeholder divs for parking options (DK) -->
+          <div class="card-content">
+            <div class="parking-wrapper">just figuring out where this div is</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
-
-      <div class="col s5">
-        <h2>Yelp Recommendations in Your Area</h2>
-
-        <!-- placeholder divs to dynamically add the restaurant recs (BG)-->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
-      <div class="col s5">
-        <h2>Where To Park</h2>
-
-        <!-- placeholder divs for parking options (DK) -->
-        <div class="parking-wrapper">just figuring out where this div is</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
