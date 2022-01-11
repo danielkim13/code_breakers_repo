@@ -97,77 +97,74 @@ $(document).ready(function () {
     displayRecents();
     //?if this is the method we want it. Brahm's function to call yelp API can go here.
   }
-
   // clicking the dropdown menu will call the searchMajorCity function tocompare the value in the array then push the lat & lng to parking fetch function.
   $(".dropdown-content").click(searchMajorCity);
-
-  // function calling parking API through google places js library. this solution was required due to CORS issue.
-  function callParkingApi(lat, lng) {
-    let location = new google.maps.LatLng(lat, lng);
-
-    let map = new google.maps.Map(document.querySelector(".card-content"), {
-      center: location,
-      zoom: 0,
-      width: 0,
-      height: 0,
-    });
-
-    let request = {
-      location: location,
-      radius: "500",
-      types: ["parking"],
-    };
-    service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
-  }
-  function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (let i = 1; i <= 5; i++) {
-        var placeName = results[i - 1].name;
-        const placeAddress = results[i - 1].vicinity;
-        console.log(results);
-
-        $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
-        $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
-        $("#business-" + i).text(placeName);
-        $("#address-" + i).text(placeAddress);
-      }
-    }
-  }
-
-  function saveSearchedCity(cityName) {
-    var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
-
-    if (recentlyViewedCity == null) {
-      recentlyViewedCity = [];
-      recentlyViewedCity.unshift(cityName);
-      localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
-    }
-
-    if (recentlyViewedCity.length > 4) {
-      recentlyViewedCity.pop();
-    }
-
-    if (!recentlyViewedCity.includes(cityName)) {
-      recentlyViewedCity.unshift(cityName);
-      localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
-    }
-  }
-
-  function displayRecents() {
-    var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
-
-    if (recentlyViewedCity) {
-      for (let i = 0; i < recentlyViewedCity.length; i++) {
-        var recentBtn = $("<button>");
-        recentBtn.attr("class", "button recent-btn column is-three-fifths m-2 has-background-info-light");
-        recentBtn.attr("type", "button");
-        recentBtn.attr("value", recentlyViewedCity[i]);
-        recentBtn.text(recentlyViewedCity[i]);
-        $("#recentBtn").append(recentBtn);
-      }
-    }
-  }
-
-  displayRecents();
 });
+
+// function calling parking API through google places js library. this solution was required due to CORS issue.
+function callParkingApi(lat, lng) {
+  let location = new google.maps.LatLng(lat, lng);
+
+  let map = new google.maps.Map(document.querySelector("#map"), {
+    center: location,
+    zoom: 10,
+  });
+
+  let request = {
+    location: location,
+    radius: "300",
+    types: ["parking"],
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (let i = 1; i <= 5; i++) {
+      const placeName = results[i - 1].name;
+      const placeAddress = results[i - 1].vicinity;
+
+      $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
+      $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
+      $("#business-" + i).text(placeName);
+      $("#address-" + i).text(placeAddress);
+    }
+  }
+}
+
+function saveSearchedCity(cityName) {
+  var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
+
+  if (recentlyViewedCity == null) {
+    recentlyViewedCity = [];
+    recentlyViewedCity.unshift(cityName);
+    localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
+  }
+
+  if (recentlyViewedCity.length > 4) {
+    recentlyViewedCity.pop();
+  }
+
+  if (!recentlyViewedCity.includes(cityName)) {
+    recentlyViewedCity.unshift(cityName);
+    localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
+  }
+}
+
+function displayRecents() {
+  var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
+
+  if (recentlyViewedCity) {
+    for (let i = 0; i < recentlyViewedCity.length; i++) {
+      var recentBtn = $("<button>");
+      recentBtn.attr("class", "button recent-btn column is-three-fifths m-2 has-background-info-light");
+      recentBtn.attr("type", "button");
+      recentBtn.attr("value", recentlyViewedCity[i]);
+      recentBtn.text(recentlyViewedCity[i]);
+      $("#recentBtn").append(recentBtn);
+    }
+  }
+}
+
+displayRecents();
