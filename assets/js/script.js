@@ -138,8 +138,8 @@ function callYelpApi(lat, lng) {
   function parkingDisplay(parking) {
     // displaying first five parking place info on the page.
     for (let i = 1; i <= 5; i++) {
-      const placeName = parking.results[i].name;
-      const placeAddress = parking.results[i].vicinity;
+      const placeName = parking.results[i - 1].name;
+      const placeAddress = parking.results[i - 1].vicinity;
       $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
       $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info")
       $("#business-" + i).text(placeName);
@@ -173,7 +173,7 @@ function callYelpApi(lat, lng) {
     if(recentlyViewedCity) {
       for (let i = 0; i < recentlyViewedCity.length; i++) {
         var recentBtn = $("<button>");
-        recentBtn.attr("class", "button recent-btn columns m-2 has-background-info-light");
+        recentBtn.attr("class", "button recent-btn column is-three-fifths m-2 has-background-info-light");
         recentBtn.attr("type", "button");
         recentBtn.attr("value", recentlyViewedCity[i]);
         recentBtn.text(recentlyViewedCity[i]);
