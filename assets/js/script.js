@@ -101,28 +101,37 @@ $(document).ready(function () {
   // clicking the dropdown menu will call the searchMajorCity function tocompare the value in the array then push the lat & lng to parking fetch function.
   $(".dropdown-content").click(searchMajorCity);
 
-  // function to call the google places API.
+  // function calling parking API through google places js library. this solution was required due to CORS issue.
   function callParkingApi(lat, lng) {
-    // had to download the chrome extension of CORS.
-    const apiKey = "AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM";
-    const apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&types=parking&rankby=distance&key=" + apiKey;
-    console.log(apiUrl);
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => parkingDisplay(data))
-      .catch((error) => console.log(error + ":oh snap!")); //fix this later.
-  }
+    let location = new google.maps.LatLng(lat, lng);
 
-  // function to display 5 nearby parking based on the city search.
-  function parkingDisplay(parking) {
-    // displaying first five parking place info on the page.
-    for (let i = 1; i <= 5; i++) {
-      const placeName = parking.results[i - 1].name;
-      const placeAddress = parking.results[i - 1].vicinity;
-      $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
-      $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
-      $("#business-" + i).text(placeName);
-      $("#address-" + i).text(placeAddress);
+    let map = new google.maps.Map(document.querySelector(".card-content"), {
+      center: location,
+      zoom: 0,
+      width: 0,
+      height: 0,
+    });
+
+    let request = {
+      location: location,
+      radius: "500",
+      types: ["parking"],
+    };
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+  }
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (let i = 1; i <= 5; i++) {
+        var placeName = results[i - 1].name;
+        const placeAddress = results[i - 1].vicinity;
+        console.log(results);
+
+        $("#parking-" + i).append("<p><i class='fa-light fa-square-parking'>");
+        $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
+        $("#business-" + i).text(placeName);
+        $("#address-" + i).text(placeAddress);
+      }
     }
   }
 
