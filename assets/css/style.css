@@ -2,3 +2,8 @@
   height: 400px;
   width: 100%;
 }
+
+.recent-btn {
+  display: flex;
+  flex-direction: column;
+}

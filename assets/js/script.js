@@ -154,17 +154,35 @@ function saveSearchedCity(cityName) {
 
 function displayRecents() {
   var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
-
+  $(".recent-btn").remove();
   if (recentlyViewedCity) {
     for (let i = 0; i < recentlyViewedCity.length; i++) {
       var recentBtn = $("<button>");
-      recentBtn.attr("class", "button recent-btn column is-three-fifths m-2 has-background-info-light");
+      recentBtn.attr("class", "button recent-btn column is-centered is-full has-text-centered m-2 has-background-info-light");
       recentBtn.attr("type", "button");
       recentBtn.attr("value", recentlyViewedCity[i]);
       recentBtn.text(recentlyViewedCity[i]);
       $("#recentBtn").append(recentBtn);
     }
+    $(".recent-btn").click(searchRecent)
   }
 }
+
+function searchRecent(event) {
+  console.log("clicked")
+  const cityName = event.target.textContent;
+  let latitude;
+  let longitude;
+
+  for (let i = 0; i < majorCityArray.length; i++) {
+    if (cityName == majorCityArray[i].name) {
+      latitude = majorCityArray[i].lat;
+      longitude = majorCityArray[i].lng;
+      break;
+    }
+  }
+
+  callParkingApi(latitude, longitude)
+};
 
 displayRecents();
