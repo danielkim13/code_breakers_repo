@@ -5,102 +5,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CityGirl</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header class="teal lighten-2 center-align">
-      <h1>CityGirl</h1>
-      <p>A short yet catchy subtitle describing point of the webpage.</p>
+    <header class="mb-5 p-4 has-background-primary-light has-text-centered">
+      <h1 class="is-size-1">CityGirl</h1>
+      <p>The one-stop-shop for CityGirls to find good eats & a spot on the street!</p>
     </header>
 
     <main>
-      <div class="row">
-        <div class="col s12 m4 card center-align">
-          <div class="card-title">
-            <h2>Where do you want to eat?</h2>
+      <div class="columns m-2">
+        <div class="column is-one-quarter mr-2 card has-text-centered">
+          <div class="card-header card-header-title is-centered has-background-primary-light mb-2">
+            <h2 class="is-size-3">Where are you?</h2>
           </div>
 
-          <div class="card-content">
-            <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger btn" href="#" data-target="dropdown1">Select a City!</a>
-
-            <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
-              <li><a href="#!">Atlanta</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Baltimore</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Boston</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Chicago</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Dallas</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Los Angeles</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Miami</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Nashville</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">New York City</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Philadelphia</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Phoenix</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Portland</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Seattle</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">St. Louis</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">Washington D.C.</a></li>
-            </ul>
-
-            <div class="recents">
-              <h3>Recently Viewed:</h3>
-              <div id="recentBtn"></div>
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button class="button mb-2 has-background-info-light" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Select a City!</span>
+              </button>
             </div>
+
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">Atlanta</a>
+                <a href="#" class="dropdown-item">Baltimore</a>
+                <a href="#" class="dropdown-item">Boston</a>
+                <a href="#" class="dropdown-item">Chicago</a>
+                <a href="#" class="dropdown-item">Dallas</a>
+                <a href="#" class="dropdown-item">Los Angeles</a>
+                <a href="#" class="dropdown-item">Miami</a>
+                <a href="#" class="dropdown-item">Nashville</a>
+                <a href="#" class="dropdown-item">New York City</a>
+                <a href="#" class="dropdown-item">Philadelphia</a>
+                <a href="#" class="dropdown-item">Phoenix</a>
+                <a href="#" class="dropdown-item">Portland</a>
+                <a href="#" class="dropdown-item">Seattle</a>
+                <a href="#" class="dropdown-item">St. Louis</a>
+                <a href="#" class="dropdown-item">Washington D.C.</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="recents">
+            <h3>Recently Viewed:</h3>
+            <div id="recentBtn" class="m-2 is-centered"></div>
           </div>
         </div>
 
-        <div class="col s12 m4 card center-align">
-
-          <div class="card-title">
-            <h2>Yelp Recommendations in Your Area</h2>
+        <div class="column card mr-2">
+          <div class="card-header card-header-title is-centered has-background-primary-light mb-2">
+            <h2 class="is-size-3">Yelp Recommendations in Your Area</h2>
           </div>
 
           <!-- placeholder divs to dynamically add the restaurant recs (BG)-->
           <div class="card-content">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div id="restaurant-1"></div>
+            <div id="restaurant-2"></div>
+            <div id="restaurant-3"></div>
+            <div id="restaurant-4"></div>
+            <div id="restaurant-5"></div>
           </div>
         </div>
 
-        <div class="col s12 m4 card center-align">
-          <div class="card-title">
-            <h2>Where To Park</h2>
+        <div class="column card has-text-centered">
+          <div class="card-header card-header-title is-centered has-background-primary-light">
+            <h2 class="is-size-3">Where To Park</h2>
           </div>
 
           <!-- placeholder divs for parking options (DK) -->
           <div class="card-content">
-            <div class="parking-wrapper">just figuring out where this div is</div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div id="map"></div>
+            <div id="parking-1">
+              <div id="business-1"></div>
+              <div id="address-1"></div>
+            </div>
+            <div id="parking-2">
+              <div id="business-2"></div>
+              <div id="address-2"></div>
+            </div>
+            <div id="parking-3">
+              <div id="business-3"></div>
+              <div id="address-3"></div>
+            </div>
+            <div id="parking-4">
+              <div id="business-4"></div>
+              <div id="address-4"></div>
+            </div>
+            <div id="parking-5">
+              <div id="business-5"></div>
+              <div id="address-5"></div>
+            </div>
           </div>
-
         </div>
       </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-M5mkBsfudTXPd0jzZQG-aTX1J6TzZmM&libraries=places"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

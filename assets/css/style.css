@@ -1,8 +1,4 @@
-h2 {
-    font-size: 25px;
-    font-weight: bold;
-}
-
-h3 {
-    font-size: 25px;
+#map {
+  height: 400px;
+  width: 100%;
 }
