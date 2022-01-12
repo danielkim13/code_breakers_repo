@@ -154,7 +154,7 @@ function saveSearchedCity(cityName) {
 
 function displayRecents() {
   var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
-
+  $(".recent-btn").remove();
   if (recentlyViewedCity) {
     for (let i = 0; i < recentlyViewedCity.length; i++) {
       var recentBtn = $("<button>");
@@ -164,7 +164,25 @@ function displayRecents() {
       recentBtn.text(recentlyViewedCity[i]);
       $("#recentBtn").append(recentBtn);
     }
+    $(".recent-btn").click(searchRecent)
   }
 }
+
+function searchRecent(event) {
+  console.log("clicked")
+  const cityName = event.target.textContent;
+  let latitude;
+  let longitude;
+
+  for (let i = 0; i < majorCityArray.length; i++) {
+    if (cityName == majorCityArray[i].name) {
+      latitude = majorCityArray[i].lat;
+      longitude = majorCityArray[i].lng;
+      break;
+    }
+  }
+
+  callParkingApi(latitude, longitude)
+};
 
 displayRecents();
