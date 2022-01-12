@@ -26,8 +26,9 @@ The team used various technologies in order to achieve the application.
 - HTML
 - CSS
 - Bulma (a CSS framework)
-- JavaScript [DOM, jQuery, <mark>if we have more write here</mark>]
+- JavaScript [DOM and jQuery]
 - Server Side APIs [Yelp and Google Places]
+- FontAwesome
 
 <hr />
 
@@ -40,7 +41,7 @@ Hey City People with vehicles! <br />
 
 ##### Acceptance Criteria for the Team
 
-<h3><b>AS A</b> hungry patron with car accessibility <br/><b>I WANT</b> restaurant suggestions in my area, along with parking options<br/><b>SO THAT</b> I can plan ahead and make it to my dinner reservations on time.</h3>
+<h3><b>AS A</b> Hangry city person <br/><b>I WANT</b> restaurant suggestions in my area, along with parking options<br/><b>SO THAT</b> I can plan ahead and make it to my reservations on time.</h3>
 
 <hr />
 <h3>Team Meetings</h3>
@@ -52,5 +53,5 @@ Historic records of our meetings and highlights for
 | 01/04/2022 | 1st team mtg              | Group agreement doc finished and uploaded to github; application wireframe; user story                                                                                                                                                    |
 | 01/05/2022 | 2nd team mtg (class time) | Continuation of brain-storming the project. Began to look into APIs and html structure built                                                                                                                                              |
 | 01/09/2022 | 3rd team mtg              | decision made from materialize css framework to bulma css framework. CORS issue solved w/ chrome extension but does not work on opening the index.html. it only works on liveview mode. progress updates as well as plan for coming week. |
-| 01/10/2022 | 4th team mtg (class time) | TBD                                                                                                                                                                                                                                       |
+| 01/10/2022 | 4th team mtg (class time) | Worked Presentation slides; fixed CORS issue with using Google Places API JS libraries.                                                                                                                                                   |
 | 01/11/2022 | 5th team mtg              | TBD                                                                                                                                                                                                                                       |
