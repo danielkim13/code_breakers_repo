@@ -133,7 +133,7 @@ const majorCityArray = [
     }
   }
 
-// function to call the openbrewerydb API.
+  // function to call the openbrewerydb API.
   function callBrewery(lat, lng) {
       const apiUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + lat + "," + lng;
     
@@ -141,20 +141,23 @@ const majorCityArray = [
         .then((response) => response.json())
         .then((data) => breweryDisplay(data))
         .catch((error) => console.log(error));
+
+  };
+
+
+  // function to display 5 breweries based on the city search.
+  function breweryDisplay(results) {
+    for (i = 1; i <= 5; i++) {
+      const breweryName = results[i - 1].name;
+      const breweryAddress = results[i - 1].street;
+      const breweryCity = results[i - 1].city;
+
+      $("#brewery-" + i).append("<p><i class='fa-light fa-square-parking'>");
+      $("#brewery-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
+      $("#brewName-" + i).text(breweryName);
+      $("#brewAddress-" + i).text(breweryAddress + ", " +breweryCity);
     }
-
-
-// function to display 5 breweries based on the city search.
-function breweryDisplay(results) {
-  for (i = 1; i <= 5; i++) {
-    const breweryName = results[i - 1].name;
-    const breweryAddress = results[i - 1].street;
-    const breweryCity = results[i - 1].city;
-
-    $("#brewName-" + i).text(breweryName);
-    $("#brewAddress-" + i).text(breweryAddress + ", " +breweryCity);
-  }
-}
+  };
   
   function saveSearchedCity(cityName) {
     var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
@@ -173,7 +176,7 @@ function breweryDisplay(results) {
       recentlyViewedCity.unshift(cityName);
       localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
     }
-  }
+  };
   
   function displayRecents() {
     var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
@@ -189,7 +192,7 @@ function breweryDisplay(results) {
       }
       $(".recent-btn").click(searchRecent)
     }
-  }
+  };
   
   function searchRecent(event) {
     console.log("clicked")
@@ -205,7 +208,8 @@ function breweryDisplay(results) {
       }
     }
   
-    callParkingApi(latitude, longitude)
+    callParkingApi(latitude, longitude);
+    callBrewery(latitude, longitude);
   };
   
   displayRecents();
