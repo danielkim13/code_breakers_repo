@@ -95,11 +95,7 @@ $(document).ready(function () {
     }
 
     callParkingApi(latitude, longitude);
-    callYelpApi(latitude, longitude);
-    //?if this is the method we want it. Brahm's function to call yelp API can go here.
-    
-  });
-});
+    callBrewery(latitude, longitude);
     saveSearchedCity(cityName);
     $(".recent-btn").remove();
     displayRecents();
@@ -121,18 +117,16 @@ $(document).ready(function () {
       .catch((error) => console.log(error + ":oh snap!")); //fix this later.
 
   }
-}
 
-// function to call the yelp API.
-function callYelpApi(lat, lng) {
-    const yelpApiKey = "bepTIbMPgvezqDDVQ-atLhx8vW7kvz9U76fdRWDp6Tx5Z7MGniXbWPAM9haFv90GipkAs1EIR165kV2ribByt5eAo5X7qUQU3Hywe2QDi9JbamjOIXtMMyHX7UjWYXYx";
-    const yelpApiUrl = "https://api.yelp.com/v3/businesses/search?location=" + lat + "," + lng + yelpApiKey;
-    console.log(yelpApiUrl);
-    fetch(yelpApiUrl)
-    .then((response) => response.json())
-    .then((data) => restaurantDisplay(data))
-    .catch((error) => console.log(error))
-}
+  // function to call the openbrewerydb API.
+  function callBrewery(lat, lng) {
+      const apiUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + lat + "," + lng;
+    
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log("oh no!"));
+    }
 
   // function to display 5 nearby parking based on the city search.
   function parkingDisplay(parking) {
@@ -146,6 +140,15 @@ function callYelpApi(lat, lng) {
       $("#address-" + i).text(placeAddress);
     }
   }
+
+// function to display 5 restaurants based on the city search.
+function restaurantDisplay(restaurants) {
+  for (i = 1; i <= 5; i++) {
+    const restaurantName = restaurants.results[i].name;
+    const restaurantAddress = restaurants.results[i].vicinity;
+    $("restaurant-" + i).text(restaurantName);
+  }
+}
 
   function saveSearchedCity(cityName) {
     var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
