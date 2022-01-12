@@ -158,7 +158,7 @@ function displayRecents() {
   if (recentlyViewedCity) {
     for (let i = 0; i < recentlyViewedCity.length; i++) {
       var recentBtn = $("<button>");
-      recentBtn.attr("class", "button recent-btn column is-three-fifths m-2 has-background-info-light");
+      recentBtn.attr("class", "button recent-btn column is-centered is-full has-text-centered m-2 has-background-info-light");
       recentBtn.attr("type", "button");
       recentBtn.attr("value", recentlyViewedCity[i]);
       recentBtn.text(recentlyViewedCity[i]);
