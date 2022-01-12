@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CityGirl</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/cityGirlLogo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header class="mb-5 p-4 has-background-primary-light has-text-centered">
+      <img id="logo" src="./assets/images/cityGirlLogo.png">
       <h1 class="is-size-1">CityGirl</h1>
-      <p>The one-stop-shop for CityGirls to find good eats & a spot on the street!</p>
+      <p>The one-stop-shop for CityGirls to find good drinks & a spot on the street!</p>
     </header>
 
     <main>
@@ -51,22 +53,37 @@
 
           <div class="recents">
             <h3>Recently Viewed:</h3>
-            <div id="recentBtn" class="m-2 is-centered"></div>
+            <div id="recentBtn" class="m-2 columns is-flex is-flex-wrap-wrap"></div>
           </div>
         </div>
 
-        <div class="column card mr-2">
+        <div class="column card has-text-centered mr-2">
           <div class="card-header card-header-title is-centered has-background-primary-light mb-2">
-            <h2 class="is-size-3">Yelp Recommendations in Your Area</h2>
+            <h2 class="is-size-3">Brewery Recommendations Near You</h2>
           </div>
 
           <!-- placeholder divs to dynamically add the restaurant recs (BG)-->
           <div class="card-content">
-            <div id="restaurant-1"></div>
-            <div id="restaurant-2"></div>
-            <div id="restaurant-3"></div>
-            <div id="restaurant-4"></div>
-            <div id="restaurant-5"></div>
+            <div id="brewery-1">
+              <div id="brewName-1" class="has-text-weight-semibold"></div>
+              <div id="brewAddress-1"></div>
+            </div>
+            <div id="brewery-2">
+              <div id="brewName-2" class="has-text-weight-semibold"></div>
+              <div id="brewAddress-2"></div>
+            </div>
+            <div id="brewery-3">
+              <div id="brewName-3" class="has-text-weight-semibold"></div>
+              <div id="brewAddress-3"></div>
+            </div>
+            <div id="brewery-4">
+              <div id="brewName-4" class="has-text-weight-semibold"></div>
+              <div id="brewAddress-4"></div>
+            </div>
+            <div id="brewery-5">
+              <div id="brewName-5" class="has-text-weight-semibold"></div>
+              <div id="brewAddress-5"></div>
+            </div>
           </div>
         </div>
 
@@ -79,23 +96,23 @@
           <div class="card-content">
             <div id="map"></div>
             <div id="parking-1">
-              <div id="business-1"></div>
+              <div id="business-1" class="has-text-weight-semibold"></div>
               <div id="address-1"></div>
             </div>
             <div id="parking-2">
-              <div id="business-2"></div>
+              <div id="business-2" class="has-text-weight-semibold"></div>
               <div id="address-2"></div>
             </div>
             <div id="parking-3">
-              <div id="business-3"></div>
+              <div id="business-3" class="has-text-weight-semibold"></div>
               <div id="address-3"></div>
             </div>
             <div id="parking-4">
-              <div id="business-4"></div>
+              <div id="business-4" class="has-text-weight-semibold"></div>
               <div id="address-4"></div>
             </div>
             <div id="parking-5">
-              <div id="business-5"></div>
+              <div id="business-5" class="has-text-weight-semibold"></div>
               <div id="address-5"></div>
             </div>
           </div>
