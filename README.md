@@ -32,7 +32,7 @@ The team used various technologies in order to achieve the application.
 
 <hr />
 
-#### <u>About the project!</u>
+#### <u>CityGirl Application (about the project)</u>
 
 How was your day? <br />
 We've all been there before where we keep looking at a clock expecting the time to move faster because we are having such an horrible day. Sometimes grabbing a poison of your choice at a city bar or brewery helps to de-stress and reset yourself. CityGirl application provides an one stop shop for searching for a great drink place as well as nearby parking spots.
