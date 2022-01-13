@@ -15,7 +15,7 @@
 | -------------- | ------------------------------------------------ |
 | Daniel Kim     | Server-side API code breaker (Google Places API) |
 | Tamara Wilhite | Front-end code breaker                           |
-| Brahm Gicheru  | Server-side API code breaker (Yelp API)          |
+| Brahm Gicheru  | Server-side API code breaker (Open Brewery API)          |
 
 <hr />
 
@@ -27,21 +27,21 @@ The team used various technologies in order to achieve the application.
 - CSS
 - Bulma (a CSS framework)
 - JavaScript [DOM and jQuery]
-- Server Side APIs [Yelp and Google Places]
+- Server Side APIs [Open Brewery and Google Places]
 - FontAwesome
 
 <hr />
 
 #### <u>About the project!</u>
 
-Hey City People with vehicles! <br />
-"What do you do when you are hungry?" Whenever your stomach throws that question to your brain, now you have three options. #1 you cook and satisfy your stomach; #2 you can just continue to drink water and attempt to satisfy your stomach but you are HANGRY! #3 you spend time searching for a nice restaurant and actually eat something that your stomach deserves. Now... have you ever been in a situation where your phone navigation app placed to in front of the restaurant but you have no idea where to park?! .. oh snap.. once again you are HANGRY and frustrated because you might miss your reservation. We have a solution for you! use our application where you may search for the restaurants and find any near by parking options so you may plan accordingly. WoOoO time to search away!
+How was your day? <br />
+We've all been there before where we keep looking at a clock expecting the time to move faster because we are having such an horrible day. Sometimes grabbing a poison of your choice at a city bar or brewery helps to de-stress and reset yourself. CityGirl application provides an one stop shop for searching for a great drink place as well as nearby parking spots.
 
 <hr />
 
 ##### Acceptance Criteria for the Team
 
-<h3><b>AS A</b> Hangry city person <br/><b>I WANT</b> restaurant suggestions in my area, along with parking options<br/><b>SO THAT</b> I can plan ahead and make it to my reservations on time.</h3>
+<h3><b>AS A</b> person who is having a really bad day <br/><b>I WANT</b> places where I can have amazing drinks in my city, along with parking options<br/><b>SO THAT</b> I don't have to look into multiple applications to decide where to go and reset myself</h3>
 
 <hr />
 <h3>Team Meetings</h3>
@@ -54,4 +54,4 @@ Historic records of our meetings and highlights for
 | 01/05/2022 | 2nd team mtg (class time) | Continuation of brain-storming the project. Began to look into APIs and html structure built                                                                                                                                              |
 | 01/09/2022 | 3rd team mtg              | decision made from materialize css framework to bulma css framework. CORS issue solved w/ chrome extension but does not work on opening the index.html. it only works on liveview mode. progress updates as well as plan for coming week. |
 | 01/10/2022 | 4th team mtg (class time) | Worked Presentation slides; fixed CORS issue with using Google Places API JS libraries.                                                                                                                                                   |
-| 01/11/2022 | 5th team mtg              | TBD                                                                                                                                                                                                                                       |
+| 01/11/2022 | 5th team mtg              | change in plan from restaurant to places where you can find good drinks. restaurant apis had many CORS issues. Wednesday presentation modified and updated; had a long meeting to fix couple of bugs.                                                                                                                                                                                                                                       |
