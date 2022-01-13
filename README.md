@@ -15,7 +15,7 @@
 | -------------- | ------------------------------------------------ |
 | Daniel Kim     | Server-side API code breaker (Google Places API) |
 | Tamara Wilhite | Front-end code breaker                           |
-| Brahm Gicheru  | Server-side API code breaker (Open Brewery API)          |
+| Brahm Gicheru  | Server-side API code breaker (Open Brewery API)  |
 
 <hr />
 
@@ -24,7 +24,6 @@
 The team used various technologies in order to achieve the application.
 
 - HTML
-- CSS
 - Bulma (a CSS framework)
 - JavaScript [DOM and jQuery]
 - Server Side APIs [Open Brewery and Google Places]
@@ -54,4 +53,10 @@ Historic records of our meetings and highlights for
 | 01/05/2022 | 2nd team mtg (class time) | Continuation of brain-storming the project. Began to look into APIs and html structure built                                                                                                                                              |
 | 01/09/2022 | 3rd team mtg              | decision made from materialize css framework to bulma css framework. CORS issue solved w/ chrome extension but does not work on opening the index.html. it only works on liveview mode. progress updates as well as plan for coming week. |
 | 01/10/2022 | 4th team mtg (class time) | Worked Presentation slides; fixed CORS issue with using Google Places API JS libraries.                                                                                                                                                   |
-| 01/11/2022 | 5th team mtg              | change in plan from restaurant to places where you can find good drinks. restaurant apis had many CORS issues. Wednesday presentation modified and updated; had a long meeting to fix couple of bugs.                                                                                                                                                                                                                                       |
+| 01/11/2022 | 5th team mtg              | change in plan from restaurant to places where you can find good drinks. restaurant apis had many CORS issues. Wednesday presentation modified and updated; had a long meeting to fix couple of bugs.                                     |
+
+<hr />
+
+<h4><strong>Screen shot our deployed application</strong></h4>
+
+![](./assets/images/citygirl_screenshot.png)
