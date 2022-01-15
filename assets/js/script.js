@@ -26,6 +26,11 @@ const majorCityArray = [
     lng: -96.799557,
   },
   {
+    name: "Detroit",
+    lat: 42.3314,
+    lng: -83.0458,
+  },
+  {
     name: "Los Angeles",
     lat: 34.041343,
     lng: -118.258614,
@@ -49,11 +54,6 @@ const majorCityArray = [
     name: "Philadelphia",
     lat: 39.951631,
     lng: -75.163932,
-  },
-  {
-    name: "Phoenix",
-    lat: 33.44965,
-    lng: -112.069627,
   },
   {
     name: "Portland",
@@ -120,13 +120,14 @@ function callParkingApi(lat, lng) {
 }
 
 function callback(results, status) {
+  $(".fas").remove();
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (let i = 1; i <= 5; i++) {
       const placeName = results[i - 1].name;
       const placeAddress = results[i - 1].vicinity;
 
       $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
-      $("#business-" + i).before("<i class='fas fa-parking fa-2x'>");
+      $("#icon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
       $("#business-" + i).text(placeName);
       $("#address-" + i).text(placeAddress);
     }
@@ -197,7 +198,6 @@ function displayRecents() {
 }
 
 function searchRecent(event) {
-  console.log("clicked");
   const cityName = event.target.textContent;
   let latitude;
   let longitude;
