@@ -130,6 +130,11 @@ function callback(results, status) {
       $("#business-" + i).text(placeName);
       $("#address-" + i).text(placeAddress);
     }
+  } else {
+    $("#modalJs").attr("class", "is-active");
+    $("#modalClose").on("click", function () {
+      window.location.reload();
+    });
   }
 }
 
