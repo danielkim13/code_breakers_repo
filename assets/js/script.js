@@ -144,9 +144,19 @@ function callBrewery(lat, lng) {
   const apiUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + lat + "," + lng;
 
   fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => breweryDisplay(data))
-    .catch((error) => console.log(error));
+    .then(function(response) {
+        if (response.ok) {
+            response.json()
+            .then((data) => breweryDisplay(data))
+        }
+        else {
+            alert('Error: Something went wrong, please try again, or contact administrator at info@citygirl.com');
+        }
+    })
+    .catch(function(error) {
+        alert('Error: Something went wrong, please try again, or contact administrator at info@citygirl.com')
+    })
+
 }
 
 // function to display 5 breweries based on the city search.
