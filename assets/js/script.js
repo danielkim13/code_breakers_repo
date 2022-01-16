@@ -126,15 +126,17 @@ function callback(results, status) {
       const placeName = results[i - 1].name;
       const placeAddress = results[i - 1].vicinity;
 
-        // adds style/display to the parking results
+      // adds style/display to the parking results
       $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
       $("#parkIcon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
       $("#parkName-" + i).text(placeName);
       $("#parkAddress-" + i).text(placeAddress);
     }
   } else {
-    $("#modalJs").attr("class", "is-active");
+    $("#modalJs").addClass("is-active");
+    $("html").addClass("is-clipped");
     $("#modalClose").on("click", function () {
+      $("html").removeClass("is-clipped");
       window.location.reload();
     });
   }
@@ -144,19 +146,18 @@ function callback(results, status) {
 function callBrewery(lat, lng) {
   const apiUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + lat + "," + lng;
 
-  fetch(apiUrl)
-    .then(function(response) {
-        if (response.ok) {
-            response.json()
-            .then((data) => breweryDisplay(data))
-        }
-        else {
-            $("#modalBr").attr("class", "is-active");
-            $("#modalCloseBr").on("click", function () {
-                window.location.reload();
-            });
-        }
-    })
+  fetch(apiUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then((data) => breweryDisplay(data));
+    } else {
+      $("#modalJs").addClass("is-active");
+      $("html").addClass("is-clipped");
+      $("#modalClose").on("click", function () {
+        $("html").removeClass("is-clipped");
+        window.location.reload();
+      });
+    }
+  });
 }
 
 // function to display 5 breweries based on the city search.
@@ -185,7 +186,7 @@ function saveSearchedCity(cityName) {
     localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
   }
 
-  // page will only save 5 recently viewed cities and will pop after length surpasses 
+  // page will only save 5 recently viewed cities and will pop after length surpasses
   if (recentlyViewedCity.length > 4) {
     recentlyViewedCity.pop();
   }
