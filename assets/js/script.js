@@ -127,9 +127,9 @@ function callback(results, status) {
       const placeAddress = results[i - 1].vicinity;
 
       $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
-      $("#icon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
-      $("#business-" + i).text(placeName);
-      $("#address-" + i).text(placeAddress);
+      $("#parkIcon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
+      $("#parkName-" + i).text(placeName);
+      $("#parkAddress-" + i).text(placeAddress);
     }
   } else {
     $("#modalJs").attr("class", "is-active");
@@ -166,6 +166,7 @@ function breweryDisplay(results) {
     const breweryCity = results[i - 1].city;
 
     $("#brewery-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
+    $("#brewIcon-" + i).append("<i class='fa-solid fa-beer-mug-empty'></i>");
     $("#brewName-" + i).text(breweryName);
     $("#brewAddress-" + i).text(breweryAddress + ", " + breweryCity);
   }
