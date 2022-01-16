@@ -150,13 +150,12 @@ function callBrewery(lat, lng) {
             .then((data) => breweryDisplay(data))
         }
         else {
-            alert('Error: Something went wrong, please try again, or contact administrator at info@citygirl.com');
+            $("#modalBr").attr("class", "is-active");
+            $("#modalCloseBr").on("click", function () {
+                window.location.reload();
+            });
         }
     })
-    .catch(function(error) {
-        alert('Error: Something went wrong, please try again, or contact administrator at info@citygirl.com')
-    })
-
 }
 
 // function to display 5 breweries based on the city search.
