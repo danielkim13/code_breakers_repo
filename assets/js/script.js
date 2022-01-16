@@ -144,9 +144,18 @@ function callBrewery(lat, lng) {
   const apiUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + lat + "," + lng;
 
   fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => breweryDisplay(data))
-    .catch((error) => console.log(error));
+    .then(function(response) {
+        if (response.ok) {
+            response.json()
+            .then((data) => breweryDisplay(data))
+        }
+        else {
+            $("#modalBr").attr("class", "is-active");
+            $("#modalCloseBr").on("click", function () {
+                window.location.reload();
+            });
+        }
+    })
 }
 
 // function to display 5 breweries based on the city search.
