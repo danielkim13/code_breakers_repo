@@ -126,10 +126,11 @@ function callback(results, status) {
       const placeName = results[i - 1].name;
       const placeAddress = results[i - 1].vicinity;
 
+        // adds style/display to the parking results
       $("#parking-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
-      $("#icon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
-      $("#business-" + i).text(placeName);
-      $("#address-" + i).text(placeAddress);
+      $("#parkIcon-" + i).append("<i class='fas fa-parking fa-2x'></i>");
+      $("#parkName-" + i).text(placeName);
+      $("#parkAddress-" + i).text(placeAddress);
     }
   } else {
     $("#modalJs").attr("class", "is-active");
@@ -160,12 +161,15 @@ function callBrewery(lat, lng) {
 
 // function to display 5 breweries based on the city search.
 function breweryDisplay(results) {
+  $(".fa-beer-mug-empty").remove();
   for (i = 1; i <= 5; i++) {
     const breweryName = results[i - 1].name;
     const breweryAddress = results[i - 1].street;
     const breweryCity = results[i - 1].city;
 
+    // adds style/display to the brewery results
     $("#brewery-" + i).attr("class", "m-4 p-1 has-background-info-light parking-info");
+    $("#brewIcon-" + i).append("<i class='fa-solid fa-beer-mug-empty fa-2x'></i>");
     $("#brewName-" + i).text(breweryName);
     $("#brewAddress-" + i).text(breweryAddress + ", " + breweryCity);
   }
@@ -174,25 +178,31 @@ function breweryDisplay(results) {
 function saveSearchedCity(cityName) {
   var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
 
+  // if there is no information saved in local storage it will create a new array, most recents will be saved on top by unshift
   if (recentlyViewedCity == null) {
     recentlyViewedCity = [];
     recentlyViewedCity.unshift(cityName);
     localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
   }
 
+  // page will only save 5 recently viewed cities and will pop after length surpasses 
   if (recentlyViewedCity.length > 4) {
     recentlyViewedCity.pop();
   }
 
+  // will only add recent to local storage if it is not already in the array
   if (!recentlyViewedCity.includes(cityName)) {
     recentlyViewedCity.unshift(cityName);
     localStorage.setItem("city", JSON.stringify(recentlyViewedCity));
   }
 }
 
+// function to display the recently viewed cities from local storage
 function displayRecents() {
   var recentlyViewedCity = JSON.parse(localStorage.getItem("city"));
   $(".recent-btn").remove();
+
+  // assigns attributes and dynmically creates the button for recently viewed
   if (recentlyViewedCity) {
     for (let i = 0; i < recentlyViewedCity.length; i++) {
       var recentBtn = $("<button>");
@@ -202,10 +212,13 @@ function displayRecents() {
       recentBtn.text(recentlyViewedCity[i]);
       $("#recentBtn").append(recentBtn);
     }
+
+    // upon click, it will run the searchRecent function to call the APIs
     $(".recent-btn").click(searchRecent);
   }
 }
 
+// function to run the API calls upon click of the recent buttons using lat and long as parameters
 function searchRecent(event) {
   const cityName = event.target.textContent;
   let latitude;
